@@ -19,7 +19,7 @@ done
 
 
 ## Cargo installation
-curl https://sh.rustup.rs -sSf | sh 2>&1
+curl https://sh.rustup.rs -sSf | sh
 cargo update 2>&1
 
 ## Starship installation
