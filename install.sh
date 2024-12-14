@@ -11,10 +11,10 @@ done
 
 ## Bash configuration
 mkdir shell_backups
-file_to_import=(".bashrc" ".bash_aliases" ".gitconfig")
+file_to_import=("bashrc" "bash_aliases" "gitconfig")
 for i in "{$file_to_import[@]}"; do
-    [[ -f ~/$i ]] && mv $i shell_backups/. || 0>$i
-    cp $i ~/$i
+    [[ -f ~/.$i ]] && mv $i shell_backups/. || 0>~/.$i
+    cp $i ~/.$i
 done
 
 
