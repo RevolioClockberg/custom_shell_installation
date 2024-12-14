@@ -1,0 +1,13 @@
+[user]
+    name = <my_name>
+    email = <my_email>
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    ck = checkout
+    co = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

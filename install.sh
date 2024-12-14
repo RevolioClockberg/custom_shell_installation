@@ -3,22 +3,28 @@
 
 ## Package installation
 install_cmd = get_installation_cmd()
-package_to_install=("bash" "curl" "vim")
+package_to_install=("bash" "curl" "vim" "neofetch")
 for i in "{$package_to_install[@]}"; do
     [[ "$(which $i)" ]] && echo "$i already installed" || $install_cmd $i
 done
 
 
 ## Bash configuration
-echo "## Export\nset bell-style visible\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\nexport GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01\nexport EDITOR=vim" >> ~/.bashrc
+mkdir shell_backups
+file_to_import=(".bashrc" ".bash_aliases" ".gitconfig")
+for i in "{$file_to_import[@]}"; do
+    [[ -f ~/$i ]] && mv $i shell_backups/. || 0>$i
+    cp $i ~/$i
+done
+
 
 ## Cargo installation
-curl https://sh.rustup.rs -sSf | sh
-cargo update
+curl https://sh.rustup.rs -sSf | sh 2>&1
+cargo update 2>&1
 
 ## Starship installation
-cargo install starship
-starship preset tokyo-night --output ~/.config/starship.toml
+cargo install starship --locked 2>&1
+starship preset tokyo-night --output ~/.config/starship.toml 2>&1
 
 
 ## Functions
@@ -64,3 +70,6 @@ get_installation_cmd() {
     return $download_cmd
 }
 
+
+## Conclusion
+source ~/.bashrc
